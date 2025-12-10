@@ -1,0 +1,19 @@
+---
+import EventsTickets from "../components/EventsTickets.jsx";
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de Entradas</title>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <Navbar />
+    <h1 class="text-gray-800 font-bold text-4xl uppercase text-center px-4 py-2">Venta de Entradas</h1>
+    <EventsTickets client:idle/>
+    <Footer />
+</body>
+</html>
