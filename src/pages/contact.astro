@@ -1,0 +1,167 @@
+---
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <Navbar />
+
+    <main class="border flex-1 container mx-auto px-8 py-12 w-full max-w-lg md:max-w-xl bg-white p-8 rounded-2xl shadow-lg mt-2 mb-2">
+        <h1 class="text-gray-800 font-bold text-3xl uppercase text-center px-4 py-2 mb-6">Formulario de Contacto</h1>
+
+        <form id="form" class="space-y-4">
+            <div class="space-y-12">
+                <div class="border-b border-white/10 pb-12">
+                    <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                        <div class="sm:col-span-3">
+                            <label class="block text-sm/6 font-medium">Nombre</label>
+                            <input 
+                            id="nombre" 
+                            type="text" 
+                            class="block w-full border border-gray-400 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            placeholder="Tu nombre"
+                            required />
+                            <p id="errorNombre" class="text-red-500 text-sm mt-1 hidden">Ingresa un nombre válido.</p>
+                        </div>
+
+                        <div class="sm:col-span-3">
+                            <label class="block text-sm/6 font-medium">Email</label>
+                            <input 
+                            id="email" 
+                            type="email" 
+                            class="block w-full border border-gray-400 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            placeholder="tucorreo@example.com"
+                            required />
+                            <p id="errorEmail" class="text-red-500 text-sm mt-1 hidden">Correo inválido.</p>
+                        </div>
+
+                        <div class="sm:col-span-6">
+                            <label class="block text-sm/6 font-medium">Asunto</label>
+                            <input id="asunto" 
+                            type="text"
+                            class="block w-full border border-gray-400 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            placeholder="Asunto del mensaje"
+                            required />
+                            <p id="errorAsunto" class="text-red-500 text-sm mt-1 hidden">El asunto no puede estar vacío.</p>
+                        </div>
+
+                        <div class="col-span-full">
+                            <label class="block text-sm/6 font-medium">Mensaje</label>
+                            <textarea id="mensaje" rows="4" 
+                            class="block w-full border border-gray-400 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            placeholder="Escribe tu mensaje..." required></textarea>
+                            <p id="errorMensaje" class="text-red-500 text-sm mt-1 hidden">El mensaje debe tener al menos 10 caracteres.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit"
+                class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Enviar</button>
+            </div>
+        </form>
+
+        <script>
+            const form = document.getElementById("form") as HTMLFormElement;
+
+            const nombreInput = document.getElementById("nombre") as HTMLFormElement;
+            const emailInput = document.getElementById("email") as HTMLFormElement;
+            const asuntoInput = document.getElementById("asunto") as HTMLFormElement;
+            const mensajeInput = document.getElementById("mensaje") as HTMLFormElement;
+
+            const errorNombre = document.getElementById("errorNombre") as HTMLFormElement;
+            const errorEmail = document.getElementById("errorEmail") as HTMLFormElement;
+            const errorAsunto = document.getElementById("errorAsunto") as HTMLFormElement;
+            const errorMensaje = document.getElementById("errorMensaje") as HTMLFormElement;
+
+            // Nombre
+            nombreInput.addEventListener("input", () => {
+                let valor = nombreInput.value.trim();
+                if (valor.length < 3) {
+                    errorNombre.classList.remove("hidden");
+                    nombreInput.classList.add("border-red-500");
+                    nombreInput.classList.remove("border-green-500");
+                } else {
+                    errorNombre.classList.add("hidden");
+                    nombreInput.classList.add("border-green-500");
+                    nombreInput.classList.remove("border-red-500");
+                }
+            });
+
+            // Email
+            emailInput.addEventListener("input", () => {
+                let valor = emailInput.value.trim();
+                if (!valor.includes("@") || !valor.includes(".")) {
+                    errorEmail.classList.remove("hidden");
+                    emailInput.classList.add("border-red-500");
+                    emailInput.classList.remove("border-green-500");
+                } else {
+                    errorEmail.classList.add("hidden");
+                    emailInput.classList.add("border-green-500");
+                    emailInput.classList.remove("border-red-500");
+                }
+            });
+
+            // Asunto
+            asuntoInput.addEventListener("input", () => {
+                let valor = asuntoInput.value.trim();
+                if (valor.length === 0) {
+                    errorAsunto.classList.remove("hidden");
+                    asuntoInput.classList.add("border-red-500");
+                    asuntoInput.classList.remove("border-green-500");
+                } else {
+                    errorAsunto.classList.add("hidden");
+                    asuntoInput.classList.remove("border-red-500");
+                    asuntoInput.classList.add("border-green-500");
+                }
+            });
+
+            // Mensaje
+            mensajeInput.addEventListener("input", () => {
+                let valor = mensajeInput.value.trim();
+                if (valor.length < 10) {
+                    errorMensaje.classList.remove("hidden");
+                    mensajeInput.classList.add("border-red-500");
+                    mensajeInput.classList.remove("border-green-500");
+                } else {
+                    errorMensaje.classList.add("hidden");
+                    mensajeInput.classList.remove("border-red-500");
+                    mensajeInput.classList.add("border-green-500");
+                }
+            });
+
+            form?.addEventListener("submit", (e) => {
+                e.preventDefault();
+                let valido = nombreInput.classList.contains("border-green-500") && 
+                emailInput.classList.contains("border-green-500") && 
+                asuntoInput.classList.contains("border-green-500") &&
+                mensajeInput.classList.contains("border-green-500");
+                
+                if (!valido) {
+                    alert("Por favor completa correctamente todos los campos.");
+                    return;
+                } else {
+                    alert("Formulario enviado con éxito");
+                    form.reset();
+                    [nombreInput, emailInput, asuntoInput, mensajeInput].forEach((campo) => {
+                        campo.classList.remove("border-green-500", "border-red-500");
+                    });
+                }
+            });
+
+            // Evento extra
+            nombreInput.addEventListener("mouseover", () => console.log("Sobre nombre"));
+            emailInput.addEventListener("mouseover", () => console.log("Sobre email"));
+            asuntoInput.addEventListener("mouseover", () => console.log("Sobre asunto"));
+            mensajeInput.addEventListener("mouseover", () => console.log("Sobre mensaje"));
+        </script>
+    </main>
+
+    <Footer />
+</body>
+</html>
