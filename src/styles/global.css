@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 .font-magic {
-  font-family: 'MedievalSharp', cursive;
+  font-family: 'Poppins', sans-serif;
 }
