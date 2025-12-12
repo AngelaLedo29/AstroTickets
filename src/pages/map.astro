@@ -1,0 +1,44 @@
+---
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubicacion de los eventos</title>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col ">
+    <Navbar />
+
+    <main class="flex-1 container mx-auto px-8 py-12">
+        <h2 class="text-4xl font-extrabold text-center text-indigo-500 mb-10">
+            Ubicación del Evento
+        </h2>
+
+        <div class="max-w-5x1 mx-auto">
+            <div id="map" class="w-full h-[400px] rounded-xl shadow-2xl border border-gray-200"></div>
+        </div>
+    </main>
+    <Footer />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script type="module">
+        document.addEventListener("DOMContentLoaded", () => {
+            const coords = [51.6905847,-0.42068,17];
+            var mimapa = L.map("map").setView(coords, 13);
+            
+            L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; Ángela Ledo',
+            maxZoom: 18
+            }).addTo(mimapa);
+
+            L.marker(coords).addTo(mimapa).bindPopup("Ejemplo");
+        })
+    </script>
+</body>
+</html>
