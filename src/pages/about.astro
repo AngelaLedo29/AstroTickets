@@ -1,0 +1,60 @@
+---
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros</title>
+</head>
+<body class="min-h-screen flex flex-col">
+    <Navbar />
+
+    <!-- <section class="bg-[#fff7d6] py-10"> -->
+    <section class="bg-linear-to-b from-[#7b3f00]/10 via-[#fff7d6] to-white py-10">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-4xl font-extrabold text-center text-yellow-600 mb-12">
+                Sobre Nosotros
+            </h2>
+
+            <!-- Contenido -->
+            <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-8 md:p-12 text-justify">
+
+            <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+                Nuestra organización está orientada al desarrollo de proyectos web
+                interactivos, aplicando tecnologías actuales y buenas prácticas de
+                diseño con el objetivo de ofrecer soluciones digitales funcionales y
+                accesibles.
+            </p>
+
+            <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+                El diseño de este proyecto ha sido cuidadosamente planificado para
+                garantizar una experiencia de usuario clara e intuitiva. Se ha optado
+                por una estética visual inspirada en una temática mágica, utilizando
+                una paleta de colores cálidos y elementos gráficos suaves que aportan
+                coherencia y personalidad al sitio web.
+            </p>
+
+            <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+                La filosofía del proyecto se fundamenta en la simplicidad, la coherencia
+                visual y la usabilidad. Cada sección ha sido estructurada de manera
+                ordenada, permitiendo una navegación fluida y facilitando el acceso a
+                la información por parte del usuario.
+            </p>
+
+            <p class="text-gray-700 text-lg leading-relaxed">
+                Asimismo, el uso de componentes interactivos contribuye a mejorar la
+                experiencia del usuario y demuestra la aplicación práctica de
+                conocimientos adquiridos durante el desarrollo del proyecto.
+            </p>
+
+            </div>
+
+        </div>
+    </section>
+
+    <Footer />
+</body>
+</html>
