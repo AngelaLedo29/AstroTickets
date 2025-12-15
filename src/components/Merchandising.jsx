@@ -116,69 +116,73 @@ export default function Merchandising() {
     const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
     return (
-        <main className="flex-1 container mx-auto px-8 py-12">
-            <button
-                onClick={() => setShowCart(!showCart)}
-                className="fixed top-4 right-4 bg-yellow-400 text-purple-900 px-4 py-2 rounded shadow hover:bg-yellow-300 transition"
-            >
-                🛒 <span className="font-bold">{totalItems}</span>
-            </button>
+        <section className="bg-linear-to-b from-[#7b3f00]/10 via-[#fff7d6] to-[#e6d9a6] min-h-screen flex flex-col">
+            <main className="flex-1 container mx-auto px-8 py-12">
+                <h1 className="text-4xl font-extrabold text-center text-yellow-600 mb-12">Venta de Merchandising</h1>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {products.map(product => (
-                    <div key={product.id} 
-                    className="flex flex-col items-center bg-purple-800/70 p-6 rounded-xl shadow-lg border border-yellow-400 h-full">
-                        <img className="w-full h-48 object-cover mb-4 rounded border border-yellow-400 bg-purple-900/30" src={product.image} alt={product.name}/>
-                        <h3 className="text-xl font-bold text-yellow-400 text-center mb-2">{product.name}</h3>
-                        <p className="text-yellow-200 font-semibold mb-4 text-center">€ {product.price}</p>
-                        <button
-                            onClick={() => addToCart(product)}
-                            class="mt-auto bg-yellow-400 text-purple-900 py-2 px-4 rounded shadow hover:bg-yellow-300 transition"
-                            >
-                            Añadir al carrito
-                        </button>
-                    </div>
-                ))}
+                <button
+                    onClick={() => setShowCart(!showCart)}
+                    className="top-4 right-4 bg-yellow-500 text-gray-900 px-4 py-2 rounded shadow hover:bg-yellow-400 transition"
+                    >
+                    🛒 <span className="font-bold">{totalItems}</span>
+                </button>
 
-                {/* Panel carrito */}
-                {showCart && (
-                    <aside className="fixed top-18 right-0 w-80 h-full bg-purple-800/95 shadow-xl p-6 overflow-y-auto z-50 border border-yellow-400 rounded-l-xl">
-                        <h2 className="text-2xl font-bold mb-4 text-yellow-400 text-center">Carrito</h2>
-                    
-                        {cart.length === 0 ? (
-                            <p className="text-yellow-200 text-center">Tu carrito está vacío</p> 
-                        ) : (
-                            <>
-                            <ul className="space-y-2">
-                                {cart.map(item => (
-                                    <li key={item.id} className="flex justify-between items-center py-4 border-b border-gray-200">
-                                        <img src={item.image} className="w-10 h-10 mr-3 object-contain mb-2 rounded border border-yellow-400 bg-purple-900/30" />
-
-                                        <span>{item.name} x {item.quantity}</span>
-
-                                        <div className="flex gap-2">
-                                            <button onClick={() => updateQuantity(item.id, item.quantity + 1)} 
-                                            className="px-2 bg-yellow-400 text-purple-900 rounded hover:bg-yellow-300">+</button>
-                                            <button onClick={() => updateQuantity(item.id, item.quantity - 1)} 
-                                            className="px-2 bg-yellow-400 text-purple-900 rounded hover:bg-yellow-300">-</button>
-                                            <button onClick={() => removeFromCart(item.id)} 
-                                            className="px-2 bg-red-500 text-white rounded hover:bg-red-600">🗑️</button>
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
-
-                            <p className="mt-4 font-semibold text-center">Total: € {totalPrice.toFixed(2)}</p>
-
-                            <button onClick={() => { alert("Compra realizada"); setCart([]); }}
-                                className="mt-2 w-full bg-gray-600 hover:bg-gray-700 text-gray-200 py-2 rounded">
-                                Pagar
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {products.map(product => (
+                        <div key={product.id} className="flex flex-col items-center bg-white 
+                            p-6 rounded-xl shadow-lg border border-gray-200 h-full">
+                            <img className="w-full h-48 object-cover mb-4 rounded border border-gray-200" src={product.image} alt={product.name}/>
+                            <h3 className="text-2xl font-bold text-yellow-600 text-center mb-2">{product.name}</h3>
+                            <p className="text-yellow-500 font-semibold mb-4 text-center">€ {product.price}</p>
+                            <button
+                                onClick={() => addToCart(product)}
+                                className="mt-auto bg-yellow-500 text-gray-900 py-2 px-4 rounded shadow hover:bg-yellow-400 transition"
+                                >
+                                Añadir al carrito
                             </button>
-                            </>
-                        )}
-                    </aside>
-                )}  
-            </div>
-        </main>
+                        </div>
+                    ))}
+
+                    {/* Panel carrito */}
+                    {showCart && (
+                        <aside className="fixed top-16 right-0 w-80 h-full bg-[#fff7d6] shadow-xl p-6 overflow-y-auto z-50 border border-yellow-400 rounded-l-xl">
+                            <h2 className="text-2xl font-bold mb-4 text-yellow-600 text-center">Carrito</h2>
+                        
+                            {cart.length === 0 ? (
+                                <p className="text-yellow-500 text-center">Tu carrito está vacío</p> 
+                            ) : (
+                                <>
+                                <ul className="space-y-2">
+                                    {cart.map(item => (
+                                        <li key={item.id} className="flex justify-between items-center py-4 border-b border-gray-200">
+                                            <img src={item.image} className="w-10 h-10 mr-3 object-contain mb-2 rounded border border-gray-200" />
+
+                                            <span>{item.name} x {item.quantity}</span>
+
+                                            <div className="flex gap-2">
+                                                <button onClick={() => updateQuantity(item.id, item.quantity + 1)} 
+                                                className="px-2 bg-yellow-500 text-gray-900 rounded hover:bg-yellow-400">+</button>
+                                                <button onClick={() => updateQuantity(item.id, item.quantity - 1)} 
+                                                className="px-2 bg-yellow-500 text-gray-900 rounded hover:bg-yellow-400">-</button>
+                                                <button onClick={() => removeFromCart(item.id)} 
+                                                className="px-2 bg-red-500 text-white rounded hover:bg-red-600">🗑️</button>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                <p className="mt-4 font-semibold text-center">Total: € {totalPrice.toFixed(2)}</p>
+
+                                <button onClick={() => { alert("Compra realizada"); setCart([]); }}
+                                    className="mt-2 w-full bg-gray-600 hover:bg-gray-700 text-gray-200 py-2 rounded">
+                                    Pagar
+                                </button>
+                                </>
+                            )}
+                        </aside>
+                    )}  
+                </div>
+            </main>
+        </section>
     );
 }
