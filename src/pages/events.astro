@@ -10,10 +10,17 @@ import Navbar from "../components/Navbar.astro";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venta de Entradas</title>
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="min-h-screen flex flex-col">
     <Navbar />
-    <h1 class="text-4xl font-bold text-yellow-400 mb-8 uppercase mt-3 text-center px-4 py-2 font-magic">Venta de Entradas</h1>
-    <EventsTickets client:idle/>
+    <div class="bg-linear-to-b from-[#7b3f00]/10 via-[#fff7d6] to-[#e6d9a6] py-10">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-4xl font-extrabold text-center text-yellow-600 mb-12">Venta de Entradas</h2>
+        </div>
+
+        <EventsTickets client:idle/>
+    </div>
     <Footer />
 </body>
 </html>
+
+<!-- bg-linear-to-b from-[#7b3f00]/10 via-[#fff7d6] to-white py-10 -->
