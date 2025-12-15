@@ -1,7 +1,51 @@
 ---
 import "../styles/global.css";
 ---
-<header class="bg-gray-500 text-gray-100 te shadow-lg">
+<header class="bg-[#fff7d6] text-gray-800 shadow-md sticky top-0 z-50">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <a href="/" class="text-2xl font-extrabold text-yellow-700">
+                AstroTickets
+            </a>
+
+             <button id="menu-btn" class="md:hidden text-yellow-700 focus:outline-none">
+                ☰
+            </button>
+
+            <ul class="hidden md:flex space-x-6 font-bold">
+                <li><a href="/" class="text-[#7b3f00] py-2 px-3 rounded-lg transition-all duration-300 ease-in-out hover:text-[#a16207] hover:shadow-[0_0_8px_rgba(255,215,0,0.6)] hover:bg-[rgba(255,215,0,0.15)]">Home</a></li>
+                <li><a href="/events" class="text-[#7b3f00] py-2 px-3 rounded-lg transition-all duration-300 ease-in-out hover:text-[#a16207] hover:shadow-[0_0_8px_rgba(255,215,0,0.6)] hover:bg-[rgba(255,215,0,0.15)]">Events</a></li>
+                <li><a href="/merch" class="text-[#7b3f00] py-2 px-3 rounded-lg transition-all duration-300 ease-in-out hover:text-[#a16207] hover:shadow-[0_0_8px_rgba(255,215,0,0.6)] hover:bg-[rgba(255,215,0,0.15)]">Merch</a></li>
+                <li><a href="/dashboard" class="text-[#7b3f00] py-2 px-3 rounded-lg transition-all duration-300 ease-in-out hover:text-[#a16207] hover:shadow-[0_0_8px_rgba(255,215,0,0.6)] hover:bg-[rgba(255,215,0,0.15)]">Dashboard</a></li>
+                <li><a href="/" class="text-[#7b3f00] py-2 px-3 rounded-lg transition-all duration-300 ease-in-out hover:text-[#a16207] hover:shadow-[0_0_8px_rgba(255,215,0,0.6)] hover:bg-[rgba(255,215,0,0.15)]">Comunidad</a></li>
+                <li><a href="/map" class="text-[#7b3f00] py-2 px-3 rounded-lg transition-all duration-300 ease-in-out hover:text-[#a16207] hover:shadow-[0_0_8px_rgba(255,215,0,0.6)] hover:bg-[rgba(255,215,0,0.15)]">Ubicación</a></li>
+                <li><a href="/about" class="text-[#7b3f00] py-2 px-3 rounded-lg transition-all duration-300 ease-in-out hover:text-[#a16207] hover:shadow-[0_0_8px_rgba(255,215,0,0.6)] hover:bg-[rgba(255,215,0,0.15)]">About</a></li>
+                <li><a href="/contact" class="text-[#7b3f00] py-2 px-3 rounded-lg transition-all duration-300 ease-in-out hover:text-[#a16207] hover:shadow-[0_0_8px_rgba(255,215,0,0.6)] hover:bg-[rgba(255,215,0,0.15)]">Contact</a></li>
+            </ul>
+        </div>
+
+        <ul id="mobile-menu" class="hidden md:hidden flex-col gap-4 py-6 font-bold text-center">
+            <li><a href="/" class="text-[#7b3f00] py-2 px-3 rounded-lg transition-all duration-300 ease-in-out block hover:text-[#a16207] hover:shadow-[0_0_8px_rgba(255,215,0,0.6)] hover:bg-[rgba(255,215,0,0.15)]">Home</a></li>
+            <li><a href="/events" class="text-[#7b3f00] py-2 px-3 rounded-lg transition-all duration-300 ease-in-out block hover:text-[#a16207] hover:shadow-[0_0_8px_rgba(255,215,0,0.6)] hover:bg-[rgba(255,215,0,0.15)]">Events</a></li>
+            <li><a href="/merch" class="text-[#7b3f00] py-2 px-3 rounded-lg transition-all duration-300 ease-in-out block hover:text-[#a16207] hover:shadow-[0_0_8px_rgba(255,215,0,0.6)] hover:bg-[rgba(255,215,0,0.15)]">Merch</a></li>
+            <li><a href="/dashboard" class="text-[#7b3f00] py-2 px-3 rounded-lg transition-all duration-300 ease-in-out block hover:text-[#a16207] hover:shadow-[0_0_8px_rgba(255,215,0,0.6)] hover:bg-[rgba(255,215,0,0.15)]">Dashboard</a></li>
+            <li><a href="/" class="text-[#7b3f00] py-2 px-3 rounded-lg transition-all duration-300 ease-in-out block hover:text-[#a16207] hover:shadow-[0_0_8px_rgba(255,215,0,0.6)] hover:bg-[rgba(255,215,0,0.15)]">Comunidad</a></li>
+            <li><a href="/map" class="text-[#7b3f00] py-2 px-3 rounded-lg transition-all duration-300 ease-in-out block hover:text-[#a16207] hover:shadow-[0_0_8px_rgba(255,215,0,0.6)] hover:bg-[rgba(255,215,0,0.15)]">Ubicación</a></li>
+            <li><a href="/about" class="text-[#7b3f00] py-2 px-3 rounded-lg transition-all duration-300 ease-in-out block hover:text-[#a16207] hover:shadow-[0_0_8px_rgba(255,215,0,0.6)] hover:bg-[rgba(255,215,0,0.15)]">About</a></li>
+            <li><a href="/contact" class="text-[#7b3f00] py-2 px-3 rounded-lg transition-all duration-300 ease-in-out block hover:text-[#a16207] hover:shadow-[0_0_8px_rgba(255,215,0,0.6)] hover:bg-[rgba(255,215,0,0.15)]">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<script>
+    const btn = document.getElementById("menu-btn");
+    const menu = document.getElementById("mobile-menu");
+
+    btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+    });
+</script>
+<!-- <header class="bg-gray-500 text-gray-100 te shadow-lg">
     <nav class="container mx-auto flex items-center justify-center p-6 max-w-7xl px-2 sm:px-6 lg:px-8">
         <ul class="flex space-x-6">
             <li><a href="/" class="hover:[text-shadow:0_0_8px_rgba(255,255,255,0.8)] rounded-lg transition duration-300 ease-in-out font-bold">Home</a></li>
@@ -14,4 +58,4 @@ import "../styles/global.css";
             <li><a href="/contact" class="hover:[text-shadow:0_0_8px_rgba(255,255,255,0.8)] rounded-lg transition duration-300 ease-in-out font-bold">Contact</a></li>
         </ul>
     </nav>
-</header>
+</header> -->
