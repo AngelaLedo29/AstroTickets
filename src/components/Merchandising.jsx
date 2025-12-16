@@ -145,14 +145,19 @@ export default function Merchandising() {
 
                     {/* Panel carrito */}
                     {showCart && (
-                        <aside className="fixed top-16 right-0 w-80 h-full bg-[#fff7d6] shadow-xl p-6 overflow-y-auto z-50 border border-yellow-400 rounded-l-xl">
+                        <aside className="fixed top-16 right-0 w-80 h-full bg-[#fff7d6] shadow-xl p-6 z-50 border border-yellow-400 rounded-l-xl">
+                            <button onClick={() => setShowCart(false)}
+                                className="absolute top-4 right-4 text-yellow-700 font-bold">
+                                X
+                            </button>
+
                             <h2 className="text-2xl font-bold mb-4 text-yellow-600 text-center">Carrito</h2>
                         
                             {cart.length === 0 ? (
                                 <p className="text-yellow-500 text-center">Tu carrito está vacío</p> 
                             ) : (
                                 <>
-                                <ul className="space-y-2">
+                                <ul className="space-y-2 overflow-y-auto pr-2 max-h-[63vh]">
                                     {cart.map(item => (
                                         <li key={item.id} className="flex justify-between items-center py-4 border-b border-gray-200">
                                             <img src={item.image} className="w-10 h-10 mr-3 object-contain mb-2 rounded border border-gray-200" />
