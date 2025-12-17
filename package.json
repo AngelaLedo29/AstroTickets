@@ -6,7 +6,6 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "deploy": "gh-pages -d dist",
     "astro": "astro"
   },
   "dependencies": {
@@ -17,8 +16,5 @@
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
     "tailwindcss": "^4.1.18"
-  },
-  "devDependencies": {
-    "gh-pages": "^6.3.0"
   }
 }

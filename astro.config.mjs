@@ -11,8 +11,5 @@ export default defineConfig({
   
   vite: {
     plugins: [tailwindcss()]
-  },
-
-  site: 'https://angelaledo29.github.io/AstroTickets',
-  base: '/AstroTickets/'
+  }
 });
