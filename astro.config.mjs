@@ -13,6 +13,6 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  site: 'https://angelaledo29.github.io',
+  site: 'https://angelaledo29.github.io/AstroTickets',
   base: '/AstroTickets/'
 });
